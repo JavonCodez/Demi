@@ -1,0 +1,359 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffe5ec;
+    /* Cute Heart Pattern Background */
+    background-image:
+        radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.8) 2px, transparent 2.5px),
+        radial-gradient(circle at 50% 60%, #ffc2d1 4px, transparent 5px);
+    background-size: 30px 30px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    padding: 10px;
+    /* Add padding for overflow safety on mobile */
+}
+
+/* Add floating hearts in background */
+body::before {
+    content: "💖 💗 💓 💝";
+    position: absolute;
+    font-size: 2rem;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    animation: rainHearts 10s linear infinite;
+    opacity: 0.3;
+    z-index: 0;
+    word-spacing: 50px;
+    white-space: nowrap;
+}
+
+@keyframes rainHearts {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+:root {
+    --primary-color: #ff4d6d;
+    --secondary-color: #ff8fa3;
+    --text-color: #590d22;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    border-radius: 30px;
+    /* Rounder corners */
+    box-shadow: 0 15px 35px rgba(255, 182, 193, 0.6);
+    backdrop-filter: blur(8px);
+    border: 4px solid #fff;
+    transition: all 0.5s ease;
+    z-index: 10;
+    max-width: 500px;
+    width: 90%;
+}
+
+.pets-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.pets-container.single-pet {
+    margin-bottom: 10px;
+}
+
+.pet-image {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    /* Circle shape */
+    border: 4px solid var(--secondary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Specific style for the single main cat image */
+.main-cat-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    /* Softer rounded square instead of circle */
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3);
+}
+
+.pet-image:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    position: relative;
+    min-height: 60px;
+    /* Ensure space for buttons */
+    margin-top: 10px;
+}
+
+button {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#yesBtn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#yesBtn:hover {
+    background-color: #d90429;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4);
+}
+
+#noBtn {
+    background-color: white;
+    color: var(--text-color);
+    border: 2px solid var(--secondary-color);
+    position: relative;
+    /* Changed from absolute to allow initial flow */
+}
+
+/* Class to apply when moving the No button */
+#noBtn.moving {
+    position: fixed;
+    /* Switch to fixed to move freely */
+    transition: all 0.25s ease-out;
+    /* Smoother movement, slightly slower to track */
+    z-index: 9999;
+    /* Ensure it stays on top of everything */
+}
+
+.hidden {
+    display: none !important;
+}
+
+#celebration {
+    text-align: center;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    border: 4px solid var(--secondary-color);
+    max-width: 500px;
+    width: 90%;
+    z-index: 20;
+}
+
+/* Celebration Image (Dog) - Independent and centered */
+.celebration-pet-img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    margin: 20px auto 10px;
+    /* Center horizontally with margin below for heart */
+    display: block;
+    object-fit: contain;
+}
+
+/* Heart Container - Centered below image */
+.heart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Pulsing Heart Animation - Independent from image */
+.pulsing-heart {
+    width: 60px;
+    height: auto;
+    animation: simplePulse 1.5s infinite ease-in-out;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+@keyframes simplePulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ---------------- Letter Section Styles ---------------- */
+
+.envelope-container {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    padding: 20px;
+}
+
+.envelope-container:hover {
+    transform: scale(1.05);
+}
+
+.envelope-front {
+    width: 300px;
+    height: 200px;
+    background-color: #ff8fa3;
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Flap of the envelope */
+.envelope-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 110px solid #ff4d6d;
+    /* Darker pink for flap */
+    border-radius: 12px;
+}
+
+.seal {
+    position: absolute;
+    z-index: 5;
+    background: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    top: 75px;
+    /* Adjust to sit on flap tip */
+    border: 3px solid #ff4d6d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.intro-text {
+    margin-top: 60px;
+    font-family: 'Pacifico', cursive;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Message styling */
+#letter-text {
+    text-align: center;
+    animation: fadeIn 0.8s ease;
+    width: 100%;
+}
+
+.typewriter-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: left;
+    /* Reads better as a letter */
+    white-space: pre-wrap;
+    /* Preserves breaks */
+    background: #fff0f3;
+    padding: 30px;
+    border-radius: 15px;
+    border-left: 8px solid var(--primary-color);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+#nextPageBtn {
+    background-color: var(--text-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#nextPageBtn:hover {
+    background-color: #333;
+    transform: translateX(5px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
